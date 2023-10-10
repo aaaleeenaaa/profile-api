@@ -20,6 +20,13 @@ let profiles = [
     address: "Straße 123, Stadt",
     email: "max@beispiel.com",
   },
+  {
+    id: 4,
+    username: "user4",
+    fullName: "Maja Mustermann",
+    address: "Hauptstraße 123, Stadt2",
+    email: "maja@beispiel.com",
+  },
 ];
 
 export function getAllProfiles() {

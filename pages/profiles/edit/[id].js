@@ -1,5 +1,24 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { StyledButton } from "@/components/Button";
+import styled from "styled-components";
+import BackLink from "@/components/Link";
+import { StyledLink } from "@/components/Link";
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledLabel = styled.label`
+  padding: 1rem;
+`;
+
+const StyledSection = styled.section`
+  padding: 0.5rem;
+`;
 
 export default function EditProfile() {
   const router = useRouter();
@@ -20,6 +39,14 @@ export default function EditProfile() {
     }
 
     fetchProfile();
+
+    return () => {
+      setProfile({
+        fullName: "",
+        address: "",
+        email: "",
+      });
+    };
   }, [id]);
 
   function handleInputChange(event) {
@@ -46,11 +73,11 @@ export default function EditProfile() {
   }
 
   return (
-    <div>
+    <>
       <h1>Edit Profile</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="fullName">Full Name</label>
+      <StyledForm onSubmit={handleSubmit}>
+        <StyledSection>
+          <StyledLabel htmlFor="fullName">Full Name </StyledLabel>
           <input
             type="text"
             id="fullName"
@@ -58,9 +85,9 @@ export default function EditProfile() {
             value={profile.fullName}
             onChange={handleInputChange}
           />
-        </div>
-        <div>
-          <label htmlFor="address">Address</label>
+        </StyledSection>
+        <StyledSection>
+          <StyledLabel htmlFor="address">Address</StyledLabel>
           <input
             type="text"
             id="address"
@@ -68,9 +95,9 @@ export default function EditProfile() {
             value={profile.address}
             onChange={handleInputChange}
           />
-        </div>
-        <div>
-          <label htmlFor="email">Email</label>
+        </StyledSection>
+        <StyledSection>
+          <StyledLabel htmlFor="email">Email</StyledLabel>
           <input
             type="email"
             id="email"
@@ -78,11 +105,11 @@ export default function EditProfile() {
             value={profile.email}
             onChange={handleInputChange}
           />
-        </div>
-        <div>
-          <button type="submit">Save</button>
-        </div>
-      </form>
-    </div>
+        </StyledSection>
+        <StyledButton type="submit">Save</StyledButton>
+      </StyledForm>
+      <StyledLink href={`/profiles/${id}`}>Cancel</StyledLink>
+      <BackLink />
+    </>
   );
 }

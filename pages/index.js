@@ -1,4 +1,14 @@
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import styled from "styled-components";
+
+const StyledList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0;
+`;
 
 export default function HomePage() {
   const [profiles, setProfiles] = useState([]);
@@ -14,15 +24,15 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div>
-      <h1>Profiles</h1>
-      <ul>
+    <>
+      <h2>Profiles</h2>
+      <StyledList>
         {profiles.map((profile) => (
           <li key={profile.id}>
-            <a href={`/profiles/${profile.id}`}>{profile.fullName}</a>
+            <Link href={`/profiles/${profile.id}`}>{profile.fullName}</Link>
           </li>
         ))}
-      </ul>
-    </div>
+      </StyledList>
+    </>
   );
 }

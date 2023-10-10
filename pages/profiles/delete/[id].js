@@ -1,6 +1,16 @@
 import { useRouter } from "next/router";
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import { StyledButton } from "@/components/Button";
+import { StyledLink } from "@/components/Link";
+import styled from "styled-components";
+import BackLink from "@/components/Link";
+
+const StyledDeletion = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
 export default function DeleteProfile() {
   const router = useRouter();
@@ -21,6 +31,10 @@ export default function DeleteProfile() {
     if (id) {
       fetchProfile();
     }
+
+    return () => {
+      setPasswordConfirmed(false);
+    };
   }, [id]);
 
   async function handleDelete() {
@@ -48,27 +62,34 @@ export default function DeleteProfile() {
   }
 
   return (
-    <div>
-      <h1>Delete Profile</h1>
-      {profile ? (
-        <>
-          <p>Do you really want to delete this profile?</p>
-          <p>Username: {profile.username}</p>
-          <input
-            type="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-          <button onClick={handleConfirmPassword}>Confirm Password</button>
-          {passwordConfirmed && (
-            <button onClick={handleDelete}>Confirm Deletion</button>
-          )}
-          <Link href={`/profiles/${id}`}>Cancel</Link>
-        </>
-      ) : (
-        <p>Profile not found</p>
-      )}
-    </div>
+    <>
+      <StyledDeletion>
+        <h2>Delete Profile</h2>
+        {profile ? (
+          <>
+            <p>Do you really want to delete this profile?</p>
+            <p>Username: {profile.username}</p>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+            <StyledButton onClick={handleConfirmPassword}>
+              Confirm Password
+            </StyledButton>
+            {passwordConfirmed && (
+              <StyledButton onClick={handleDelete}>
+                Confirm Deletion
+              </StyledButton>
+            )}
+            <StyledLink href={`/profiles/${id}`}>Cancel</StyledLink>
+          </>
+        ) : (
+          <p>Profile not found</p>
+        )}
+      </StyledDeletion>
+      <BackLink />
+    </>
   );
 }
