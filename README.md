@@ -1,3 +1,5 @@
+# Customer Profile API
+
 Hey there,
 
 this is my solution for an API serving profile data and enabling to edit and delete it.
@@ -14,15 +16,17 @@ Via api/profile/[id].js, each profile can be accessed individually with its id. 
 
 For deleting a profile, a password has to be entered (in this case "ProfileDeletion" without the quotation marks). This is to make sure that the profiles can not be deleted by everyone.
 
-Unfortunately, at the moment, all profiles are shown to everybody and can be edited by everyone. This would have to be adjusted so that each user can only see and edit their own profile. This could be realized by involving a login. Moreover, it might make sense to work on the profile deletion so that it does not depend on a password anymore but that it can only be done by certain staff members when they are logged in. This was not possible to realize due to a lack of time but could be added at a later stage.
+Unfortunately, at the moment, all profiles are shown to everybody and can be edited by everyone. This would have to be adjusted so that each user can only see and edit their own profile which could for instance be realized by involving a login. Moreover, it might make sense to work on the profile deletion so that it does not depend on a password anymore but that it can only be done by certain staff members when they are logged in. Moreover, a bug appeared: When deleting an account and afterwards editing another one, the deleted one appears again. When doing the same process again, however, it works fine.
+These issues were not possible to fix due to a lack of time but could be improved at a later stage.
 
 ## Local development
 
-To run project commands locally, you need to install the dependencies using `npm i` first.
+To run the project locally, you need to install the dependencies using `npm i` first.
 
-You can then use the following commands:
+Then you can start the development server with `npm run dev` - doing this, you can see the project working on localhost.
 
-- `npm run dev` to start the development server - this is recommended to see the project working on localhost
+Other commands you could use are:
+
 - `npm run build` to create a production build
 - `npm run start` to start the production build
-- `npm run test` to run the tests in watch mode (if available)
+- `npm run test` to run the tests in watch mode (if available - in this case not)

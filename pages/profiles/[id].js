@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import { StyledLink } from "@/components/Link";
+import BackLink from "@/components/Link";
 
 export default function Profile() {
   const router = useRouter();
@@ -25,14 +26,15 @@ export default function Profile() {
   }, [id]);
 
   return (
-    <div>
-      <h1>Profile Page</h1>
+    <>
+      <h2>Profile Page</h2>
       <p>Username: {profile.username}</p>
       <p>Full Name: {profile.fullName}</p>
       <p>Address: {profile.address}</p>
       <p>Email: {profile.email}</p>
-      <Link href={`/profiles/edit/${id}`}>Edit Profile</Link>
-      <Link href={`/profiles/delete/${id}`}>Delete Profile</Link>
-    </div>
+      <StyledLink href={`/profiles/edit/${id}`}>Edit Profile</StyledLink>
+      <StyledLink href={`/profiles/delete/${id}`}>Delete Profile</StyledLink>
+      <BackLink />
+    </>
   );
 }
