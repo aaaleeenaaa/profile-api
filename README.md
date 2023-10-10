@@ -16,7 +16,7 @@ Via api/profile/[id].js, each profile can be accessed individually with its id. 
 
 For deleting a profile, a password has to be entered (in this case "ProfileDeletion" without the quotation marks). This is to make sure that the profiles can not be deleted by everyone.
 
-Unfortunately, at the moment, all profiles are shown to everybody and can be edited by everyone. This would have to be adjusted so that each user can only see and edit their own profile which could for instance be realized by involving a login. Moreover, it might make sense to work on the profile deletion so that it does not depend on a password anymore but that it can only be done by certain staff members when they are logged in. Moreover, a bug appeared: When deleting an account and afterwards editing another one, the deleted one appears again. When doing the same process again, however, it works fine.
+Unfortunately, at the moment, all profiles are shown to everybody and can be edited by everyone. This would have to be adjusted so that each user can only see and edit their own profile which could for instance be realized by involving a login. It might also make sense to work on the profile deletion so that it does not depend on a password anymore but that it can only be done by certain staff members when they are logged in. Moreover, a bug popped up: When deleting an account and afterwards editing another one, the deleted one appears again. When doing the same process again, however, it works fine.
 These issues were not possible to fix due to a lack of time but could be improved at a later stage.
 
 ## Local development
